@@ -2,9 +2,11 @@
 
 A powerful CLI tool that analyzes Azure resources and identifies cost optimization opportunities. Provides actionable recommendations with projected savings across compute, storage, networking, and database services.
 
+[![PyPI](https://img.shields.io/pypi/v/azure-cost-optimizer.svg)](https://pypi.org/project/azure-cost-optimizer/)
 [![CI](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/actions/workflows/ci.yml/badge.svg)](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/actions)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Downloads](https://img.shields.io/pypi/dm/azure-cost-optimizer.svg)](https://pypi.org/project/azure-cost-optimizer/)
 
 ## Features
 
@@ -21,7 +23,15 @@ A powerful CLI tool that analyzes Azure resources and identifies cost optimizati
 ### Install
 
 ```bash
-pip install -e .
+pip install azure-cost-optimizer
+```
+
+Or install from source:
+
+```bash
+git clone https://github.com/SanjaySundarMurthy/azure-cost-optimizer.git
+cd azure-cost-optimizer
+pip install -e ".[dev]"
 ```
 
 ### Run Demo
