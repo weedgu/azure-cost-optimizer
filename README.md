@@ -1,8 +1,9 @@
-# Azure Cost Optimizer
+﻿# Azure Cost Optimizer
 
 A powerful CLI tool that analyzes Azure resources and identifies cost optimization opportunities. Provides actionable recommendations with projected savings across compute, storage, networking, and database services.
 
 [![PyPI](https://img.shields.io/pypi/v/azure-cost-optimizer.svg)](https://pypi.org/project/azure-cost-optimizer/)
+[![Python](https://img.shields.io/pypi/pyversions/azure-cost-optimizer)](https://pypi.org/project/azure-cost-optimizer/)
 [![CI](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/actions/workflows/ci.yml/badge.svg)](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/actions)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -31,7 +32,7 @@ Or install from source:
 ```bash
 git clone https://github.com/SanjaySundarMurthy/azure-cost-optimizer.git
 cd azure-cost-optimizer
-pip install -e ".[dev]"
+pip install azure-cost-optimizer
 ```
 
 ### Run Demo
@@ -154,7 +155,7 @@ azure_cost_optimizer/
 
 ```bash
 # Install with dev dependencies
-pip install -e ".[dev]"
+pip install azure-cost-optimizer
 
 # Run tests
 pytest -v
@@ -184,3 +185,50 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 - GitHub: [@SanjaySundarMurthy](https://github.com/SanjaySundarMurthy)
 - Portfolio: [sanjaysundarmurthy-portfolio.vercel.app](https://sanjaysundarmurthy-portfolio.vercel.app/)
+
+
+## 🐳 Docker
+
+Run without installing Python:
+
+```bash
+# Build the image
+docker build -t azure-cost-optimizer .
+
+# Run
+docker run --rm azure-cost-optimizer --help
+
+# Example with volume mount
+docker run --rm -v ${PWD}:/workspace azure-cost-optimizer [command] /workspace
+```
+
+Or pull from the container registry:
+
+```bash
+docker pull ghcr.io/SanjaySundarMurthy/azure-cost-optimizer:latest
+docker run --rm ghcr.io/SanjaySundarMurthy/azure-cost-optimizer:latest --help
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+Please ensure tests pass before submitting:
+
+```bash
+pip install azure-cost-optimizer
+pytest -v
+ruff check .
+```
+
+## 🔗 Links
+
+- **PyPI**: [https://pypi.org/project/azure-cost-optimizer/](https://pypi.org/project/azure-cost-optimizer/)
+- **GitHub**: [https://github.com/SanjaySundarMurthy/azure-cost-optimizer](https://github.com/SanjaySundarMurthy/azure-cost-optimizer)
+- **Issues**: [https://github.com/SanjaySundarMurthy/azure-cost-optimizer/issues](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/issues)
